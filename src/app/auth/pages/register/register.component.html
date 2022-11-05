@@ -1,0 +1,102 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="submitForm()" autocomplete="off" [formGroup]="miForm">
+
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre de Usuario">
+                    <span class="text-danger form-text" *ngIf="validarError('nombre')">Debe de ser en formato de nombre
+                        y apellido
+                    </span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Email</label>
+
+                <div class="col-sm-9">
+                    <input formControlName="email" type="email" class="form-control" placeholder="Email del Usuario">
+                    <span class="text-danger form-text" *ngIf="validarError('email')">{{errorEmail}}
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Username</label>
+
+                <div class="col-sm-9">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Username del Usuario"
+                    formControlName="username">
+                    <span 
+                    class="text-danger form-text" 
+                    *ngIf="validarError('username')">
+                    {{errorUsername}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Contraseña</label>
+
+                <div class="col-sm-9">
+                    <input 
+                    formControlName="password"
+                    type="password" class="form-control" placeholder="Contraseña de la cuenta">
+                    <span class="text-danger form-text" *ngIf="validarError('password')">La contraseña debe ser mayor a 6 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Confirmar contraseña</label>
+
+                <div class="col-sm-9">
+                    <input 
+                    formControlName="verifyPw"
+                    type="password" class="form-control" placeholder="Confirme su contraseña">
+                    <span class="text-danger form-text" *ngIf="validarError('verifyPw')">Las contraseñas deben de ser iguales
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button 
+                    class="btn btn-primary float-end" 
+                    type="submit"
+                    [disabled]="miForm.pending">
+                        Guardar</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<span>Form Valid</span>
+<pre>{{ miForm.valid }}</pre>
+
+<span>Email Errores</span>
+<pre>{{ miForm.get('email')?.errors | json}}</pre>
+
+<span>Username Invalid</span>
+<pre>{{ miForm.get('username')?.status | json}}</pre>
+
+<span>Username Errores</span>
+<pre>{{ miForm.get('username')?.errors | json}}</pre>
+
+<!-- <span>Password - Errores</span>
+<pre>{{ miForm.controls['password'].errors | json}}</pre>
+
+<span>Confirmar - Errores</span>
+<pre>{{ miForm.controls['verifyPw'].errors | json}}</pre> -->

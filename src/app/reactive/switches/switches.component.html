@@ -1,0 +1,93 @@
+<h2>Reactivos: Switches</h2>
+<hr>
+
+<form [formGroup] = 'miFormulario' (ngSubmit)="guardar()">
+
+    <!-- Radio -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Género</label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input 
+                class="form-check-input" 
+                value="M" 
+                type="radio" 
+                id="RadioMasculino"
+                formControlName="genero">
+                <label 
+                class="form-check-label" 
+                for="flexRadioDefault1">
+                    Masculino
+                </label>
+            </div>
+            <div class="form-check">
+                <input 
+                class="form-check-input" 
+                value="F" 
+                type="radio" 
+                id="RadioFemenino"
+                formControlName="genero">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Femenino
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switches -->
+    <div class="row mb-3">
+        <label 
+        class="col-sm-3 col-form-label">Notificaciones</label>
+        <div class="col-sm-9 mt-2">
+
+            <div class="form-check form-switch">
+                <input 
+                class="form-check-input" 
+                type="checkbox" 
+                id="flexSwitchCheckDefault"
+                formControlName="notificaciones">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Quiero recibir notificaciones</label>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- Checks -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+
+            <div class="form-check">
+            <input 
+            class="form-check-input" 
+            type="checkbox" 
+            value="" 
+            id="flexCheckDefault"
+            formControlName="condiciones">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Acepto los terminos y condiciones de uso
+                </label>
+              </div>
+
+        </div>
+    </div>
+
+    <button 
+    type="submit" 
+    class="btn btn-primary float-end"
+    [disabled]="miFormulario.invalid"
+    >Guardar</button>
+
+</form>
+
+
+<span>Valor del formulario</span>
+<pre>{{miFormulario.value | json}}</pre>
+
+<span>Validacion del formulario</span>
+<pre>{{miFormulario.valid}}</pre>
+
+<span>Condiciones</span>
+<pre>{{persona | json}}</pre>
